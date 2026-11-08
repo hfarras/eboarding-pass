@@ -1,0 +1,77 @@
+body {
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+.navbar-brand { font-weight: 700; letter-spacing: -0.5px; }
+.kai-orange { color: #ed6b23; }
+.bg-kai-gradient { background: linear-gradient(135deg, #0d233a 0%, #1e3a8a 100%); }
+
+.card-custom {
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  background: #fff;
+}
+.badge-station {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+.badge-type {
+  background-color: #f1f5f9;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.table-custom { vertical-align: middle; }
+.table-custom th {
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #f1f5f9;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+.table-custom td { padding-top: 16px; padding-bottom: 16px; }
+
+.btn-kai {
+  background-color: #ed6b23;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 10px 20px;
+  transition: all 0.2s ease;
+}
+.btn-kai:hover {
+  background-color: #d95a14;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(237, 107, 35, 0.3);
+}
+.btn-action {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+.btn-action:hover { transform: scale(1.1); }
+
+.code-block {
+  font-family: monospace;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #0f172a;
+  font-weight: 600;
+}
