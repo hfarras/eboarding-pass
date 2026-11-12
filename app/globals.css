@@ -75,3 +75,40 @@ body {
   color: #0f172a;
   font-weight: 600;
 }
+
+.seat-legend { display: inline-block; width: 18px; height: 18px; border-radius: 5px; margin-right: 6px; vertical-align: middle; }
+
+.seat-grid {
+  display: grid;
+  grid-template-columns: 28px repeat(3, 52px) 32px repeat(2, 52px);
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.seat-col-label, .seat-row-label { font-weight: 700; text-align: center; color: #1e293b; }
+
+.seat {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  border: 2px solid #3b82f6;
+  background: #f8faff;
+  font-weight: 700;
+  color: #fff;
+  transition: transform 0.1s;
+}
+.seat:hover:not(:disabled) { transform: scale(1.08); }
+.seat-taken { background: #b4b7bd; border-color: #b4b7bd; cursor: not-allowed; }
+.seat-selected { background: #2563eb; border-color: #2563eb; }
+
+.coach-tabs { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px; }
+.coach-tab {
+  flex: 0 0 auto;
+  padding: 12px 36px;
+  border-radius: 999px;
+  border: 1px solid #dbeafe;
+  background: #fff;
+  font-weight: 500;
+  color: #1e293b;
+}
+.coach-tab.active { background: #ed6b23; border-color: #ed6b23; color: #fff; }

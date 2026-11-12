@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     }
 
     const rows = await sql`
-      SELECT id, password_hash FROM accounts WHERE email = ${email.toLowerCase()}
+      SELECT id, password_hash, role FROM accounts WHERE email = ${email.toLowerCase()}
     `;
 
     const valid =
@@ -26,7 +26,7 @@ export async function POST(request: Request) {
     }
 
     await createSession(rows[0].id);
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, role: rows[0].role });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: 'Login failed' }, { status: 500 });

@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { getSession } from '@/lib/auth';
+import { getCurrentUser } from '@/lib/auth';
 import { sql } from '@/lib/db';
-import Navbar from './Navbar';
+import Navbar from '../components/Navbar';
 import AlertMessage from './AlertMessage';
 import DeleteButton from './DeleteButton';
 
@@ -38,8 +38,9 @@ async function DashboardContent({
 }: {
   searchParams: Promise<{ status?: string }>;
 }) {
-  const userId = await getSession();
-  if (!userId) redirect('/');
+  const user = await getCurrentUser();
+  if (!user) redirect('/');
+  if (user.role === 'admin') redirect('/admin');
 
   const { status } = await searchParams;
 
@@ -50,25 +51,25 @@ async function DashboardContent({
            to_char(arrive_time, 'HH24:MI') AS arrive_time,
            passenger_name, passenger_nik, passenger_type, seat, gate_code
     FROM boarding_passes
-    WHERE account_id = ${userId}
+    WHERE account_id = ${user.id}
     ORDER BY id DESC
   `) as Pass[];
 
   return (
     <>
-      <Navbar />
+      <Navbar name={user.name} role={user.role} />
 
       <div className="container py-5">
         <div className="row align-items-center mb-4">
           <div className="col-md-6 mb-3 mb-md-0">
-            <h3 className="fw-bold mb-1">Daftar E-Boarding Pass</h3>
+            <h3 className="fw-bold mb-1">Halo, {user.name}</h3>
             <p className="text-muted mb-0">
-              Kelola dan pantau seluruh data tiket perjalanan kereta api.
+              Kelola dan pantau seluruh data tiket perjalanan kereta api Anda.
             </p>
           </div>
           <div className="col-md-6 text-md-end">
-            <Link href="/dashboard/new" className="btn btn-kai">
-              <i className="bi bi-ticket-perforated-fill me-2"></i>Tambah Boarding Pass
+            <Link href="/dashboard/book" className="btn btn-kai">
+              <i className="bi bi-ticket-perforated-fill me-2"></i>Pesan Tiket
             </Link>
           </div>
         </div>
@@ -113,7 +114,7 @@ async function DashboardContent({
                     <tr>
                       <td colSpan={9} className="text-center py-5 text-muted">
                         <i className="bi bi-inbox fs-1 d-block mb-2 text-secondary"></i>
-                        Belum ada data boarding pass yang tersimpan.
+                        Belum ada tiket. Klik &quot;Pesan Tiket&quot; untuk memesan.
                       </td>
                     </tr>
                   )}
@@ -167,16 +168,7 @@ async function DashboardContent({
                         </span>
                       </td>
                       <td className="text-center pe-4">
-                        <div className="d-flex justify-content-center gap-1">
-                          <Link
-                            href={`/dashboard/edit/${p.id}`}
-                            className="btn btn-outline-warning btn-action text-dark"
-                            title="Edit Data"
-                          >
-                            <i className="bi bi-pencil-square"></i>
-                          </Link>
-                          <DeleteButton id={p.id} />
-                        </div>
+                        <DeleteButton id={p.id} />
                       </td>
                     </tr>
                   ))}

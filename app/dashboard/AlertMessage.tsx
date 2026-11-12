@@ -1,18 +1,23 @@
 const alerts: Record<string, { cls: string; icon: string; text: string }> = {
-  success: {
+  booked: {
     cls: 'alert-success',
     icon: 'bi-check-circle-fill',
-    text: 'Data boarding pass berhasil ditambahkan!',
-  },
-  updated: {
-    cls: 'alert-info',
-    icon: 'bi-info-circle-fill',
-    text: 'Data boarding pass berhasil diperbarui!',
+    text: 'Tiket berhasil dipesan!',
   },
   deleted: {
     cls: 'alert-danger',
     icon: 'bi-trash-fill',
     text: 'Data boarding pass telah berhasil dihapus!',
+  },
+  saved: {
+    cls: 'alert-success',
+    icon: 'bi-check-circle-fill',
+    text: 'Data kereta berhasil disimpan!',
+  },
+  removed: {
+    cls: 'alert-danger',
+    icon: 'bi-trash-fill',
+    text: 'Kereta berhasil dihapus!',
   },
 };
 

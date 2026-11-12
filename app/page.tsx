@@ -39,7 +39,7 @@ export default function LoginPage() {
       setError(result.error);
       return;
     }
-    router.push('/dashboard');
+    router.push(result.role === 'admin' ? '/admin' : '/dashboard');
   }
 
   return (
