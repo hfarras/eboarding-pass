@@ -50,13 +50,6 @@ export default function Navbar({
               </Link>
             </li>
             <li className="nav-item ms-lg-2">
-              <Link
-                className="btn btn-kai btn-sm"
-                href={isAdmin ? '/admin/trains/new' : '/dashboard/book'}
-              >
-                <i className="bi bi-plus-circle me-1"></i>
-                {isAdmin ? 'Kereta Baru' : 'Pesan Tiket'}
-              </Link>
             </li>
             <li className="nav-item ms-lg-3 text-white d-flex align-items-center">
               <i className="bi bi-person-circle me-2 fs-5"></i>
